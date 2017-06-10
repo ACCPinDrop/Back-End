@@ -4,30 +4,32 @@ from django.utils import timezone
 
 # Create your models here.
 
-class TimeStamp(models.Model):
-	created_at = models.DateTimeField(editable=False)
-	updated_at = models.DateTimeField()
+# class TimeStamp(models.Model):
+# 	created_at = models.DateTimeField(editable=False)
+# 	updated_at = models.DateTimeField()
     
-	class Meta:
-		abstract = True
+# 	class Meta:
+# 		abstract = True
 
-	def save(self, *args, **kwargs):
-		if not self.created_at:
-			self.created_at = timezone.now()
-		self.updated_at = timezone.now()
-		return super(TimeStamp, self).save(*args, **kwargs)
+# 	def save(self, *args, **kwargs):
+# 		if not self.created_at:
+# 			self.created_at = timezone.now()
+# 		self.updated_at = timezone.now()
+# 		return super(TimeStamp, self).save(*args, **kwargs)
 
-class Location(TimeStamp):
+class Location(models.Model):
     address = models.CharField(max_length=200)
     venue_name = models.CharField(max_length=50)
     latitude = models.DecimalField(max_digits=10, decimal_places=7)
     longitude = models.DecimalField(max_digits=10, decimal_places=7)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return '%s' % (self.venue_name)
 
-class Organizer(TimeStamp):
-    organizer_email = models.EmailField(max_length=254, primary_key=True, default="example@gmail.com")
+class Organizer(models.Model):
+    organizer_email = models.EmailField(max_length=254, primary_key=True, unique=True)
     organizer_first_name = models.CharField(max_length=20, blank=True)
     organizer_last_name = models.CharField(max_length=50, blank=True) 
     phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
@@ -37,23 +39,23 @@ class Organizer(TimeStamp):
         return '%s' % (self.organizer_first_name)
 
 class Category(models.Model):
-    category_name = models.CharField(max_length=50, primary_key=True, default="Python")
+    category_name = models.CharField(max_length=50, primary_key=True, unique=True)
 
     def __str__(self):
         return '%s' % (self.category_name)
 
-class Group(TimeStamp):
-    group_name = models.CharField(max_length=50)
+class Group(models.Model):
+    group_name = models.CharField(max_length=50, primary_key=True, unique=True)
     group_description = models.TextField()
     # file will be saved to MEDIA_ROOT/uploads/2017-01-30
-    group_picture = models.ImageField(upload_to='images/%Y-%m-%d/', blank=True)
+    group_picture = models.ImageField(upload_to='images/%Y-%m-%d/')
     group_categories = models.ManyToManyField(Category)
     group_organizers = models.ManyToManyField(Organizer)
 
     def __str__(self):
         return '%s' % (self.group_name)
 
-class Event(TimeStamp):
+class Event(models.Model):
     event_name = models.CharField(max_length=50)
     event_date = models.DateField()
     event_start_time = models.TimeField()
