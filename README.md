@@ -9,7 +9,7 @@
 - Run python manage.py migrate.
 - Create a new Super User ( run python manage.py createsuperuser ).
 - Go to your Django administration page ( http://127.0.0.1:8000/admin/ ) and login.
-- Enter some data into the tables.
+- Enter some data into the tables through the *newData*  function accessing this URL  __/newdata__  ( http://127.0.0.1:8000/newdata ).
 
 ## Now you can check each table. 
 
