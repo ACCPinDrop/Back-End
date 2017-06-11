@@ -10,7 +10,7 @@
 - Create a new Super User ( run python manage.py createsuperuser ).
 - Go to your Django administration page ( http://127.0.0.1:8000/admin/ ) and login.
 
-## Now you can test the tables and fields. 
+## Now you can access each table. 
 
 - http://127.0.0.1:8000/all/events
 - http://127.0.0.1:8000/all/groups
