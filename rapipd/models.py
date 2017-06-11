@@ -14,9 +14,17 @@ class TimeStamp(models.Model):
     def save(self, *args, **kwargs):
         return super(TimeStamp, self).save(*args, **kwargs)
 
+
+class Category(TimeStamp):
+    category_name = models.CharField(max_length=50, primary_key=True, unique=True)
+
+    def __str__(self):
+        return '%s' % (self.category_name)
+   
+
 class Location(TimeStamp):
-    address = models.CharField(max_length=200)
     venue_name = models.CharField(max_length=50)
+    address = models.CharField(max_length=200)
     latitude = models.DecimalField(max_digits=10, decimal_places=7)
     longitude = models.DecimalField(max_digits=10, decimal_places=7)
     
@@ -34,12 +42,6 @@ class Organizer(TimeStamp):
 
     def __str__(self):
         return '%s' % (self.organizer_first_name)
-
-class Category(TimeStamp):
-    category_name = models.CharField(max_length=50, primary_key=True, unique=True)
-
-    def __str__(self):
-        return '%s' % (self.category_name)
 
 class Group(TimeStamp):
     group_name = models.CharField(max_length=50, primary_key=True, unique=True)
