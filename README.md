@@ -8,8 +8,8 @@
 - Go inside of your new folder **`( cd Back-End-rapiModels )`**.
 - Run **python manage.py makemigrations** .
 - Run **python manage.py migrate** .
-- Create a new Super User **`( run python manage.py createsuperuser )`**.
-- Start your server **`( run python manage.py runserver )`**.
+- Create a new Super User **`( python manage.py createsuperuser )`**.
+- Start your server **`( python manage.py runserver )`**.
 - Go to your Django administration page **`( http://127.0.0.1:8000/admin/ )`** and login.
 
 ## Inserting data to our databases
@@ -20,7 +20,7 @@
 
 #### Or...
 
-> You can type in your shell **`python manage.py createdata`**.
+> You can type in your shell **`python manage.py createdata`** .
 
 ## Deleting data from our databases
 
@@ -28,7 +28,7 @@
 
 #### Or...
 
-> You can type in your shell **`python manage.py deletedata`**.
+> You can type in your shell **`python manage.py deletedata`** .
 
 
 ## Now you can test the tables and fields. 
