@@ -33,7 +33,7 @@ def allCategories(request):
     categories_list = list(categories) 
     return JsonResponse(categories_list, safe=False)
 
-def newData(request):
+def create_data(self):
     
     ## CATEGORIES
     
@@ -168,5 +168,15 @@ def newData(request):
 
     return HttpResponse("Congrats! You now have a populated database! <a href='http://127.0.0.1:8000/all'> Go check it! </a>")
 
+
+def delete_data(self):
+  e = Category.objects.all().delete()
+  e = Location.objects.all().delete()
+  e = Organizer.objects.all().delete()
+  e = Group.objects.all().delete()
+  e = Event.objects.all().delete()
+
+
+
 def all(request):
-    return HttpResponse('Tables: <br><br><br> - <a href="http://127.0.0.1:8000/all/events">Events</a> <br> - <a href="http://127.0.0.1:8000/all/groups">Groups</a> <br> - <a href="http://127.0.0.1:8000/all/organizers">Organizers</a> <br> - <a href="http://127.0.0.1:8000/all/locations">Locations</a> <br> - <a href="http://127.0.0.1:8000/all/categories">Catgories</a>')
+  return HttpResponse('Tables: <br><br><br> - <a href="http://127.0.0.1:8000/all/events">Events</a> <br> - <a href="http://127.0.0.1:8000/all/groups">Groups</a> <br> - <a href="http://127.0.0.1:8000/all/organizers">Organizers</a> <br> - <a href="http://127.0.0.1:8000/all/locations">Locations</a> <br> - <a href="http://127.0.0.1:8000/all/categories">Catgories</a>')
