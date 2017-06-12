@@ -16,17 +16,17 @@
 
 >   As you probably noticed we don't have any data inside our models so lets add some data:
 
-> >     I have created a new function called `create_data` to populate our databases. You just have to access the __`/create_data`__ url to trigger the `create_data` function `( http://127.0.0.1:8000/create_data )`
+> I have created a new function called `create_data` to populate our databases. You just have to access the __`/create_data`__ url to trigger the `create_data` function `( http://127.0.0.1:8000/create_data )`
 
-####Or...
+#### Or...
 
 > > You can type in your shell `python manage.py createdata.
 
-## Deleting data to our databases
+## Deleting data from our databases
 
 >   I have created a new function called `delete_data` to delete our databases. You just have to access the __`/delete_data`__ url to trigger the `delete_data` function `( http://127.0.0.1:8000/create_data )`.
 
-####Or...
+#### Or...
 
 > > You can type in your shell `python manage.py deletedata.
 
