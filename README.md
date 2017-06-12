@@ -6,8 +6,8 @@
 - Unzip the repository file.
 - Open a Shell/Terminal/Comand-Line.
 - Go inside of your new folder **`( cd Back-End-rapiModels )`**.
-- Run **python manage.py makemigrations**.
-- Run **python manage.py migrate**.
+- Run **python manage.py makemigrations** .
+- Run **python manage.py migrate** .
 - Create a new Super User **`( run python manage.py createsuperuser )`**.
 - Start your server **`( run python manage.py runserver )`**.
 - Go to your Django administration page **`( http://127.0.0.1:8000/admin/ )`** and login.
