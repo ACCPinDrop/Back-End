@@ -20,7 +20,7 @@
 
 #### Or...
 
-> > You can type in your shell `python manage.py createdata.
+> > You can type in your shell `python manage.py createdata`.
 
 ## Deleting data from our databases
 
@@ -28,7 +28,7 @@
 
 #### Or...
 
-> > You can type in your shell `python manage.py deletedata.
+> > You can type in your shell `python manage.py deletedata`.
 
 
 ## Now you can test the tables and fields. 
