@@ -1,7 +1,0 @@
-/rapipd/migrations
-/pindrop/__pycache__/
-/rapipd/__pycache__/
-db.sqlite3
-/rapipd/management/
-
-.gitignore

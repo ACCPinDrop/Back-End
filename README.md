@@ -39,24 +39,24 @@
 
 ## GET
 
-# All
+*All*
 - http://127.0.0.1:8000/categories/
 
-# One
+*One*
 - http://127.0.0.1:8000/categories/id
 
 
-## POST
+ *POST*
 
 - http://127.0.0.1:8000/categories/
 
 
-## PUT
+ *PUT*
 
 - http://127.0.0.1:8000/categories/id
 
 
-## DELETE
+ *DELETE*
 
 - http://127.0.0.1:8000/categories/id
 
