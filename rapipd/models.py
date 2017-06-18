@@ -5,6 +5,7 @@ from django.utils import timezone
 # Create your models here.
 
 class TimeStamp(models.Model):    
+    id = models.AutoField(primary_key=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -16,7 +17,7 @@ class TimeStamp(models.Model):
 
 
 class Category(TimeStamp):
-    category_name = models.CharField(max_length=50, primary_key=True, unique=True)
+    category_name = models.CharField(max_length=50,  unique=True)
 
     def __str__(self):
         return '%s' % (self.category_name)
@@ -33,7 +34,7 @@ class Location(TimeStamp):
         return '%s' % (self.venue_name)
 
 class Organizer(TimeStamp):
-    organizer_email = models.EmailField(max_length=254, primary_key=True, unique=True)
+    organizer_email = models.EmailField(max_length=254,  unique=True)
     organizer_first_name = models.CharField(max_length=20, blank=True)
     organizer_last_name = models.CharField(max_length=50, blank=True) 
     phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
@@ -44,7 +45,7 @@ class Organizer(TimeStamp):
         return '%s' % (self.organizer_first_name)
 
 class Group(TimeStamp):
-    group_name = models.CharField(max_length=50, primary_key=True, unique=True)
+    group_name = models.CharField(max_length=50,  unique=True)
     group_description = models.TextField()
     # file will be saved to MEDIA_ROOT/uploads/2017-01-30
     group_picture = models.ImageField(upload_to='images/%Y-%m-%d/')

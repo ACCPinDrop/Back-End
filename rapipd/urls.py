@@ -6,10 +6,6 @@ from rapipd import views
 
 
 urlpatterns = [
-    url(r'^$', views.all),
-    url(r'^events', views.allEvents),
-    url(r'^groups', views.allGroups),
-    url(r'^organizers', views.allOrganizers),
-    url(r'^locations', views.allLocations),
-    url(r'^categories', views.allCategories),
+    url(r'^categories/$', views.category_list),
+    url(r'^categories/(?P<pk>[0-9]+)/$', views.category_detail),
 ]

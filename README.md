@@ -33,15 +33,33 @@
 
 ## Now you can test the tables and fields. 
 
->   Please, feel free to analyze the tables and fields and give us **`( BackEnd Team )`** some feedback. There are many things to improve within our models and we only can do it together! ( **http://127.0.0.1:8000/all** )
+>   Please, feel free to analyze the tables and fields and give us **`( BackEnd Team )`** some feedback. There are many things to improve within our models and we only can do it together!
 
-### Each Table
+### Requets
 
-- http://127.0.0.1:8000/all/events
-- http://127.0.0.1:8000/all/groups
-- http://127.0.0.1:8000/all/organizers
-- http://127.0.0.1:8000/all/locations
-- http://127.0.0.1:8000/all/categories
+## GET
+
+# All
+- http://127.0.0.1:8000/categories/
+
+# One
+- http://127.0.0.1:8000/categories/id
+
+
+## POST
+
+- http://127.0.0.1:8000/categories/
+
+
+## PUT
+
+- http://127.0.0.1:8000/categories/id
+
+
+## DELETE
+
+- http://127.0.0.1:8000/categories/id
+
 
 
 
