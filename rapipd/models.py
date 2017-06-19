@@ -48,7 +48,7 @@ class Group(TimeStamp):
     group_name = models.CharField(max_length=50,  unique=True)
     group_description = models.TextField()
     # file will be saved to MEDIA_ROOT/uploads/2017-01-30
-    group_picture = models.ImageField(upload_to='images/%Y-%m-%d/')
+    group_picture = models.ImageField(upload_to='images/%Y-%m-%d/', null=True)
     group_categories = models.ManyToManyField(Category)
     group_organizers = models.ManyToManyField(Organizer)
 
