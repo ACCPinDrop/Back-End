@@ -7,7 +7,7 @@ from rapipd.views import category, location, organizer, group, event
 
 router = routers.DefaultRouter()
 
-router.register(r'categorys', category.category_list)
+router.register(r'categories', category.category_list)
 router.register(r'locations', location.location_list)
 router.register(r'organizers', organizer.organizer_list)
 router.register(r'groups', group.group_list)

@@ -4,7 +4,7 @@ from rapipd.models import Category, Location, Organizer, Group, Event
 class CategorySerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
 		model = Category
-		fields = ('id', 'category_name', 'created_at', 'updated_at')
+		fields = ('url', 'id', 'category_name', 'created_at', 'updated_at')
 
 class LocationsSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
