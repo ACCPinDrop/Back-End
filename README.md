@@ -37,25 +37,20 @@
 
 ### Requets
 
-## GET / *POST* / *DELETE*
-*All* 
+## GET / *POST*
+
 - http://127.0.0.1:8000/categories/
 - http://127.0.0.1:8000/locations/
 - http://127.0.0.1:8000/organizers/
 - http://127.0.0.1:8000/groups/
 - http://127.0.0.1:8000/events/
 
-*Each*
-- http://127.0.0.1:8000/categories/id
-- http://127.0.0.1:8000/locations/id
-- http://127.0.0.1:8000/organizers/id
-- http://127.0.0.1:8000/groups/id
-- http://127.0.0.1:8000/events/id
+## *PUT* / *DELETE*
 
-## *PUT*
-*Each*
-- http://127.0.0.1:8000/categories/id
-- http://127.0.0.1:8000/locations/id
-- http://127.0.0.1:8000/organizers/id
-- http://127.0.0.1:8000/groups/id
-- http://127.0.0.1:8000/events/id
+- http://127.0.0.1:8000/categories/id/
+- http://127.0.0.1:8000/locations/id/
+- http://127.0.0.1:8000/organizers/id/
+- http://127.0.0.1:8000/groups/id/
+- http://127.0.0.1:8000/events/id/
+
+
