@@ -2,12 +2,16 @@
 
 ### Requirements
 
-- Python 3.6.1
-- PostgreSQL 9.3.17
+- Python - 3.6.1v
+
+- Virtualenv - 15.1.0v
+
+- PostgreSQL(9.3.17v):
 - - TABLE_NAME = postgres
 - - USER_NAME = postgres
 - - PASSWORD = 132465
 - - PORT = 5432
+
 
 
 ## Getting Started
