@@ -1,5 +1,15 @@
 # PinDrop Restful API
 
+### Requirements
+
+- Python 3.6.1
+- PostgreSQL 9.3.17
+- - TABLE_NAME = postgres
+- - USER_NAME = postgres
+- - PASSWORD = 132465
+- - PORT = 5432
+
+
 ## Getting Started
 
 - Download this repository to your machine.
