@@ -1,152 +1,118 @@
 from django.http import HttpResponse
 from .models import Event, Group, Organizer, Location, Category
+import secrets
 
 
 def create_data(self):
-    
-    ## CATEGORIES
-    
-    # Python
-    e = Category(category_name="Python") 
-    e.save()
-    # Django
-    e = Category(category_name="Django") 
-    e.save()
-    # Ruby
-    e = Category(category_name="Ruby") 
-    e.save()
-    # JavaScript
-    e = Category(category_name="JavaScript") 
-    e.save()
-    # AngularJS
-    e = Category(category_name="AngularJS") 
-    e.save()
-    
+    categories_maximum = 21 # -1 times 5 = 100
+    locations_maximum = 51 # -1 times 3 = 150
+    organizers_maximum = 26 # -1 times 4 = 100
+    groups_maximum = 21 # -1 times 3 = 60
+    events_maximum = 101 # -1 times 3 = 300
+
+    ## CATEGORIES 
+    categories_list = ['Python', 'Django', 'Ruby', 'JavaScript', 'AngularJS']    
+    for i in range(1, categories_maximum):
+        for category in categories_list:
+            name = category+str(i)
+            e = Category(category_name=name) 
+            e.save()
+
+
     ## LOCATIONS
-    
-    # Tech Valley Center of Gravity
-    e = Location(venue_name="Tech Valley Center of Gravity", address="30 3rd St, Troy, NY 12180", latitude=42.731191, longitude= -73.6906112) 
-    e.save()
+    venue_name_list = ['Tech Valley Center of Gravity', 'Harvard University', 'University of Oxford']  
+    address_list = ['30 3rd St, Troy, NY 12180', 'Cambridge, MA 02138', 'Oxford OX1 3BD, UK']
+    latitude_list = [42.731191, 42.379399, 51.754870]
+    longitude_list = [-73.6906112, -71.115664, -1.254667]
+    for i in range(1, locations_maximum):
+        for each_venue_name in venue_name_list:
+            new_venue_name = each_venue_name+str(i)
+            e = Location(
+                        venue_name=new_venue_name, 
+                        address=secrets.choice(address_list), 
+                        latitude=secrets.choice(latitude_list), 
+                        longitude=secrets.choice(longitude_list)
+                        ) 
+            e.save()
 
-    # Harvard University
-    e = Location(venue_name="Harvard University", address="Cambridge, MA 02138", latitude=42.379399, longitude= -71.115664) 
-    e.save()
+    ## ORGANIZERS  
+    organizer_first_name_list = ['Misael', 'Ricky', 'Nikita', 'Aaron']
+    organizer_last_name_list = ['Virissimo de Moura', 'Meyers', 'Thomas', 'Banewicz']
+    for i in range(1, organizers_maximum):
+        for each_organizer_first_name in organizer_first_name_list:
+            new_organizer_first_name = each_organizer_first_name+str(i)
+            new_organizer_email = new_organizer_first_name+"@gmail.com"
+            e = Organizer(
+                            organizer_email=new_organizer_email, 
+                            organizer_first_name=new_organizer_first_name, 
+                            organizer_last_name=secrets.choice(organizer_last_name_list), 
+                            organizer_cellphone_number= 5180000000
+                        ) 
+            e.save()
 
-    # University of Oxford
-    e = Location(venue_name="University of Oxford", address="Oxford OX1 3BD, UK", latitude=51.754870, longitude= -1.254667) 
-    e.save()
-    
-    ## ORGANIZERS
-    
-    # Misael
-    e = Organizer(organizer_email="mvmmisael@gmail.com", organizer_first_name="Misael", organizer_last_name="Virissimo de Moura", organizer_cellphone_number= 5180000000) 
-    e.save()
-
-    # Ricky
-    e = Organizer(organizer_email="meyers.ricky@gmail.com", organizer_first_name="Ricky", organizer_last_name="Meyers", organizer_cellphone_number= 5180000000) 
-    e.save()
-
-    # Nikita
-    e = Organizer(organizer_email="f.nikita.thomas@gmail.com", organizer_first_name="Nikita", organizer_last_name="Thomas", organizer_cellphone_number= 5180000000) 
-    e.save()
-
-    # Aaron 
-    e = Organizer(organizer_email="aaron.banewicz@gmail.com", organizer_first_name="Aaron ", organizer_last_name="Banewicz", organizer_cellphone_number= 5180000000) 
-    e.save()
-    
 
     ## GROUPS
-    category1 = Category.objects.get(category_name="Python").id
-    category2 = Category.objects.get(category_name="Django").id
-    category3 = Category.objects.get(category_name="Ruby").id
-    category4 = Category.objects.get(category_name="JavaScript").id
-    category5 = Category.objects.get(category_name="AngularJS").id
-
-    organizer1 = Organizer.objects.get(organizer_first_name="Misael").id
-    organizer2 = Organizer.objects.get(organizer_first_name="Ricky").id
-    organizer3 = Organizer.objects.get(organizer_first_name="Nikita").id
-    organizer4 = Organizer.objects.get(organizer_first_name="Aaron ").id
+    group_name_list = ['Albany Can Code', 'Google', 'Apple']
+    group_description_list = [
+        'AlbanyCanCode, was established in the summer of 2016 to serve two key stakeholder groups.',
+        'Google is an American multinational technology company specializing in Internet-related services and products. These include online advertising technologies, search, cloud computing, software, and hardware.',
+        'Apple Inc. is an American multinational technology company headquartered in Cupertino, California that designs, develops, and sells consumer electronics, computer software, and online services.'
+    ] 
 
 
-    # ACC
-    e = Group(group_name="Albany Can Code", 
-                  group_description="AlbanyCanCode, was established in the summer of 2016 to serve two key stakeholder groups.",
-                  ) 
-    e.save()
-    e.group_categories.add(category1, category2)
-    e.group_organizers.add(organizer1, organizer4)
-
-    # Google
-    e = Group(group_name="Google", 
-                  group_description="Google is an American multinational technology company specializing in Internet-related services and products. These include online advertising technologies, search, cloud computing, software, and hardware.",
-                  ) 
-    e.save()
-    e.group_categories.add(category3, category4)
-    e.group_organizers.add(organizer2, organizer3, organizer4)
-
-    # Apple
-    e = Group(group_name="Apple", 
-                  group_description="Apple Inc. is an American multinational technology company headquartered in Cupertino, California that designs, develops, and sells consumer electronics, computer software, and online services.",
-                  ) 
-    e.save()
-    e.group_categories.add(category2, category4, category3)
-    e.group_organizers.add(organizer1, organizer3)
-
-    # EVENTS
-    
-    group1 = Group.objects.get(group_name="Google")
-    group2 = Group.objects.get(group_name="Apple")
-    group3 = Group.objects.get(group_name="Albany Can Code")
+    for i in range(1, groups_maximum):
+        for each_group_name in group_name_list:
+            new_group_name_list = each_group_name+str(i)
+            e = Group(
+                        group_name=new_group_name_list, 
+                        group_description=secrets.choice(group_description_list)
+                        ) 
+            e.save()
+            e.group_categories.add(Category.objects.order_by('?')[:1].get(), Category.objects.order_by('?')[:1].get())
+            e.group_organizers.add(Organizer.objects.order_by('?')[:1].get(), Organizer.objects.order_by('?')[:1].get())
 
 
-    location1 = Location.objects.get(venue_name="University of Oxford")
-    location2 = Location.objects.get(venue_name="Harvard University")
-    location3 = Location.objects.get(venue_name="Tech Valley Center of Gravity")
-    
-    # DjangoCon Europe
-    e = Event(
-              event_name="DjangoCon Europe", 
-              event_date="2018-04-7",
-              event_start_time="16:00:00",
-              event_end_time="22:00:00",
-              event_group=group1,
-              event_location=location1
-             )
-    e.save()
+    ## EVENTS
+    event_name_list = ['DjangoCon Europe', 'ANGULAR SUMMIT', 'Annual SciPy Conference']
+    event_date_list = ['2018-04-7', '2018-09-25', '2018-07-10'] 
+    event_start_time_list = ['16:00:00', '16:00:00', '16:00:00'] 
+    event_end_time_list = ['22:00:00', '22:00:00', '22:00:00'] 
+    for i in range(1, events_maximum):
+        for each_event_name in event_name_list:
+            new_event_name = each_event_name+str(i)
+            e = Event(
+                        event_name=new_event_name, 
+                        event_date=secrets.choice(event_date_list),
+                        event_start_time=secrets.choice(event_start_time_list),
+                        event_end_time=secrets.choice(event_end_time_list),
+                        event_group=Group.objects.order_by('?')[:1].get(),
+                        event_location= Location.objects.order_by('?')[:1].get()
+                        ) 
+            e.save()
 
-    # ANGULAR SUMMIT
-    e = Event(
-              event_name="ANGULAR SUMMIT", 
-              event_date="2018-09-25",
-              event_start_time="16:00:00",
-              event_end_time="22:00:00",
-              event_group=group3,
-              event_location=location3
-             )
-    e.save()
+    print("You have created:")
+    print('categories_maximum', Category.objects.count())
+    print('locations_maximum', Location.objects.count())
+    print('organizers_maximum', Organizer.objects.count())
+    print('groups_maximum', Group.objects.count())
+    print('events_maximum', Event.objects.count())
 
-    # Annual SciPy Conference
-    e = Event(
-              event_name="Annual SciPy Conference", 
-              event_date="2018-07-10",
-              event_start_time="16:00:00",
-              event_end_time="22:00:00",
-              event_group=group2,
-              event_location=location2
-             )
-    e.save()
+    ## RETURN
+    return HttpResponse("<h3>Congrats! You now have a populated database! </h3><br> --> <a href='http://127.0.0.1:8000'> Go check it! </a>")
 
-    return HttpResponse("Congrats! You now have a populated database! <a href='http://127.0.0.1:8000/all'> Go check it! </a>")
 
 
 def delete_data(self):
+  print('You have deleted:')
+  print('categories_maximum', Category.objects.count())
+  print('locations_maximum', Location.objects.count())
+  print('organizers_maximum', Organizer.objects.count())
+  print('groups_maximum', Group.objects.count())
+  print('events_maximum', Event.objects.count())
   e = Category.objects.all().delete()
   e = Location.objects.all().delete()
   e = Organizer.objects.all().delete()
   e = Group.objects.all().delete()
   e = Event.objects.all().delete()
 
-
-
-def all(request):
-  return HttpResponse('Tables: <br><br><br> - <a href="http://127.0.0.1:8000/all/events">Events</a> <br> - <a href="http://127.0.0.1:8000/all/groups">Groups</a> <br> - <a href="http://127.0.0.1:8000/all/organizers">Organizers</a> <br> - <a href="http://127.0.0.1:8000/all/locations">Locations</a> <br> - <a href="http://127.0.0.1:8000/all/categories">Catgories</a>')
+  return HttpResponse('<h3> You have emptied your database. </h3><br> --> <a href="http://127.0.0.1:8000/create_data">Fill up the database</a> <br> --> <a href="http://127.0.0.1:8000">Bak to the  Browsable API</a> ')
