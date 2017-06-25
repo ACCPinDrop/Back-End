@@ -1,5 +1,4 @@
 from django.conf.urls import include, url
-from rest_framework import routers
 from django.contrib import admin
 from rapipd import data_factory
 
