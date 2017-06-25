@@ -14,10 +14,9 @@
 
 ### Getting Started
 
-> - Download this repository to your machine.
-> - Unzip the repository file.
 > - Open a Shell/Terminal/Comand-Line.
-> - Go inside of your new folder **`( cd Back-End-rapiModels )`**.
+> - Clone this repository to your machine.
+> - Go inside of your new folder **`( cd Back-End )`**.
 > - Create a new virtual environment named **'env'** using the [virtualenv](https://virtualenv.pypa.io/en/stable/installation/) tool. **`( virtualenv env --no-site-package )`**
 > - [Activate](https://virtualenv.pypa.io/en/stable/userguide/#activate-script) your new virtual environment. Use their [user Guide](https://virtualenv.pypa.io/en/stable/userguide/) if needed. 
 > - [Install](http://python-guide-pt-br.readthedocs.io/en/latest/dev/virtualenvs/#other-notes) the the necessary packages using the requirements.txt file. Remember, you must to be in the same repository as the requirements.txt file. **`( pip install -r requirements.txt )`**
